@@ -11,6 +11,40 @@ A robust, production-ready crypto checkout backend simulator built with TypeScri
 
 This application provides a complete backend simulation for cryptocurrency payment processing, implementing the core workflow of a payment gateway with transaction management, webhook handling, and comprehensive validation.
 
+## 📋 Case Study Implementation
+
+This project addresses the **Backend Developer Case Study: Crypto Checkout Simulator** requirements by modernizing a legacy PHP/Coinbase Commerce system with a clean TypeScript implementation.
+
+### ✅ Core Requirements Met
+
+| Requirement | Implementation | Status |
+|-------------|----------------|--------|
+| **POST /checkout endpoint** | Accepts `{amount, email}`, returns fake Coinbase URL | ✅ Complete |
+| **POST /webhook receiver** | Validates payload, stores transactions with status/email/timestamp | ✅ Complete |
+| **Database design** | SQLite schema with transactions table (see `schema.sql`) | ✅ Complete |
+| **Documentation** | Comprehensive README with setup, assumptions, improvements | ✅ Complete |
+
+### 🚀 Bonus Features Implemented
+
+- **✅ Retry Logic**: Exponential backoff for webhook processing failures
+- **✅ Error Tracking**: Winston logging with multiple levels (console + file)
+- **✅ Health Monitoring**: `/health` endpoint for service status checks
+- **✅ Async Handling**: Proper async/await patterns throughout the application
+- **✅ Input Validation**: Zod schemas for request validation
+- **✅ Comprehensive Testing**: Jest test suite with 100% endpoint coverage
+
+### 🔄 Legacy System Migration
+
+**From:** PHP + Coinbase Commerce + MySQL + DigitalOcean  
+**To:** TypeScript + Express + SQLite + Modern DevOps practices
+
+**Key Improvements:**
+- **Type Safety**: TypeScript eliminates runtime type errors
+- **Better Testing**: Comprehensive test suite vs. poorly documented legacy code
+- **Modern Async**: Async/await patterns vs. callback-based PHP
+- **Structured Logging**: Winston vs. basic PHP logging
+- **API Validation**: Zod schemas vs. manual PHP validation
+
 ## ✨ Features
 
 ### Core Functionality
@@ -60,6 +94,33 @@ npm run build
 # Start production server
 npm start
 ```
+
+## 🤔 Assumptions & Design Decisions
+
+Based on the case study scenario of modernizing a legacy crypto checkout system:
+
+### **Technical Assumptions**
+- **SQLite vs MySQL**: Used SQLite for simplicity, but TypeORM makes switching to MySQL/PostgreSQL trivial
+- **In-Memory vs External Queue**: Implemented retry logic in-process; production would use Redis/RabbitMQ
+- **Sync vs Async Webhooks**: Made webhook processing synchronous for simplicity; real system would use background jobs
+- **Mock Payment Gateway**: Simulated Coinbase Commerce API responses rather than actual integration
+
+### **Business Logic Assumptions**
+- **Transaction States**: Only `pending`, `completed`, `failed` (can easily extend for `cancelled`, `expired`, etc.)
+- **Amount Validation**: Positive numbers only, no currency conversion logic
+- **Email Validation**: Standard email format, no domain restrictions
+- **Duplicate Handling**: Transaction IDs are unique, duplicate webhooks are idempotent
+
+### **Security Assumptions**
+- **No Authentication**: Focused on core functionality; production needs JWT/OAuth
+- **No Webhook Signatures**: Skipped Coinbase signature verification for simulation
+- **No Rate Limiting**: Would add express-rate-limit in production
+- **No HTTPS**: Development-focused; production requires SSL/TLS
+
+### **Operational Assumptions**
+- **Single Instance**: No load balancing or horizontal scaling considerations
+- **File-based Logging**: Production would use centralized logging (ELK stack, CloudWatch)
+- **No Monitoring**: Production needs APM tools (New Relic, DataDog)
 
 ## 📚 API Documentation
 
