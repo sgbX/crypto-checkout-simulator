@@ -13,7 +13,7 @@ This application provides a complete backend simulation for cryptocurrency payme
 
 ## 📋 Case Study Implementation
 
-This project addresses the **Backend Developer Case Study: Crypto Checkout Simulator** requirements by modernizing a legacy PHP/Coinbase Commerce system with a clean TypeScript implementation.
+This project modernizes a legacy PHP/Coinbase Commerce system with a clean TypeScript implementation.
 
 ### ✅ Core Requirements Met
 
