@@ -392,13 +392,6 @@ The project uses strict TypeScript configuration with:
 - **Infrastructure as Code** - Terraform or similar
 - **Database Backups** - Automated backup strategy
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 
 ## 🙋‍♂️ Support
@@ -410,5 +403,4 @@ If you have any questions or need help with the project:
 - Review the test files for usage examples
 
 ---
-
-Built with ❤️ using TypeScript and Express.js 
+Grishma 
